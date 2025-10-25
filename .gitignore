@@ -18,6 +18,9 @@ build/
 .env.local
 .env.*.local
 
+# FileTag database
+.filetag.json
+
 # Editor directories and files
 .idea/
 .vscode/
