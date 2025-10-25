@@ -27,7 +27,10 @@ describe('FileTag', () => {
     try {
       await fs.rm(tempDir, { recursive: true, force: true });
     } catch (error) {
-      // Ignore cleanup errors
+      // Log cleanup failures but don't fail the test
+      if (error.code !== 'ENOENT') {
+        console.warn(`Warning: Failed to clean up temp directory: ${error.message}`);
+      }
     }
   });
 

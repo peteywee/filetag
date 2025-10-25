@@ -19,7 +19,7 @@
     "organize",
     "files"
   ],
-  "author": "",
+  "author": "peteywee",
   "license": "MIT",
   "engines": {
     "node": ">=14.0.0"
