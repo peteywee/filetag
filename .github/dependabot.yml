@@ -1,0 +1,15 @@
+version: 2
+updates:
+  - package-ecosystem: "pnpm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "automerge"
+    # Automatically merge updates when all tests/CI pass
+    automerged_updates:
+      - match:
+          update_type: "all"
+        merge_method: "squash"

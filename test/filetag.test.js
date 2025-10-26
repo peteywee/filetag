@@ -199,4 +199,27 @@ describe('FileTag', () => {
       expect(tags).toEqual(['tag1', 'tag2']);
     });
   });
+
+  describe('normalization and validation', () => {
+    test('should normalize tags (trim and lowercase)', async () => {
+      const tags = await fileTag.addTags(testFilePath, [' Work ', 'Important']);
+      expect(tags).toEqual(['work', 'important']);
+      const stored = await fileTag.getTags(testFilePath);
+      expect(stored).toEqual(['work', 'important']);
+    });
+
+    test('should throw when no valid tags provided', async () => {
+      await expect(fileTag.addTags(testFilePath, ['   ', ''])).rejects.toThrow('No valid tags provided');
+    });
+
+    test('database file is valid JSON after save', async () => {
+      await fileTag.addTags(testFilePath, ['alpha']);
+      const content = await fs.readFile(testDbPath, 'utf8');
+      expect(() => JSON.parse(content)).not.toThrow();
+      const obj = JSON.parse(content);
+      const abs = path.resolve(testFilePath);
+      expect(obj[abs]).toBeDefined();
+      expect(obj[abs].tags).toContain('alpha');
+    });
+  });
 });

@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"name": "filetag",
+			"path": "."
+		}
+	],
+	"settings": {
+		"ColorfulMonorepo.workspaces.collection": [
+			{
+				"path": "/home/patrick/fileroot/filetag",
+				"packageName": "filetag",
+				"label": "🌱  filetag",
+				"foreground": "#ffffff",
+				"background": "#d65d53"
+			}
+		],
+		"files.exclude": {}
+	}
+}
