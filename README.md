@@ -31,7 +31,6 @@ pnpm install
 
 Install globally with pnpm:
 
-
 ```bash
 pnpm install -g .
 ```
@@ -76,6 +75,7 @@ pnpm exec filetag -- add document.pdf work important
 
  
 ```
+
 ### Programmatic API
 
 ```javascript
