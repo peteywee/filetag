@@ -11,18 +11,29 @@ A Node.js file tagging system for organizing and managing files with metadata ta
 - 💾 Persistent tag storage
 - 📊 List all tags and tagged files
 
+Notes:
+
+- Tags are normalized on input: they are trimmed and converted to lowercase. For example, " Work " and "work" are treated as the same tag.
+- Database writes are atomic: saves write to a temporary file and rename into place to reduce risk of corruption.
+- CLI supports machine-readable JSON output via the `--json` flag and shows package version with `--version` or `-v`.
+
 ## Installation
 
 ### Local Installation
 
+We use pnpm. Install dependencies with:
+
 ```bash
-npm install
+pnpm install
 ```
 
 ### Global Installation
 
+Install globally with pnpm:
+
+
 ```bash
-npm install -g
+pnpm install -g .
 ```
 
 ## Usage
@@ -58,6 +69,13 @@ filetag clear document.pdf
 filetag help
 ```
 
+For pnpm users or to run the local CLI directly:
+
+```bash
+pnpm exec filetag -- add document.pdf work important
+
+ 
+```
 ### Programmatic API
 
 ```javascript
@@ -100,7 +118,7 @@ Add tags to a file.
 
 - `filePath` (string): Path to the file
 - `tags` (array): Array of tag strings
-- Returns: Promise<array> - Updated array of all tags for the file
+- Returns: `Promise<array>` - Updated array of all tags for the file
 
 ### `removeTags(filePath, tags)`
 
@@ -108,14 +126,14 @@ Remove tags from a file.
 
 - `filePath` (string): Path to the file
 - `tags` (array): Array of tag strings to remove
-- Returns: Promise<array> - Remaining tags for the file
+- Returns: `Promise<array>` - Remaining tags for the file
 
 ### `getTags(filePath)`
 
 Get all tags for a file.
 
 - `filePath` (string): Path to the file
-- Returns: Promise<array> - Array of tags
+- Returns: `Promise<array>` - Array of tags
 
 ### `findByTags(tags, matchAll)`
 
@@ -123,26 +141,26 @@ Find files by tags.
 
 - `tags` (array): Array of tags to search for
 - `matchAll` (boolean): If true, file must have all tags; if false, any tag matches
-- Returns: Promise<array> - Array of file paths
+- Returns: `Promise<array>` - Array of file paths
 
 ### `listAllTags()`
 
 List all unique tags in the database.
 
-- Returns: Promise<array> - Sorted array of all tags
+- Returns: `Promise<array>` - Sorted array of all tags
 
 ### `listAll()`
 
 Get all files with their tags.
 
-- Returns: Promise<object> - Object mapping file paths to their tag data
+- Returns: `Promise<object>` - Object mapping file paths to their tag data
 
 ### `clearTags(filePath)`
 
 Clear all tags from a file.
 
 - `filePath` (string): Path to the file
-- Returns: Promise<void>
+- Returns: `Promise<void>`
 
 ## Database Format
 
