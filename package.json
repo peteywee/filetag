@@ -1,0 +1,40 @@
+{
+  "name": "filetag",
+  "version": "1.0.0",
+  "description": "A Node.js file tagging system for organizing and managing files with metadata tags",
+  "main": "lib/index.js",
+  "bin": {
+    "filetag": "./bin/filetag.js"
+  },
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint lib/ bin/ test/",
+    "start": "node bin/filetag.js"
+  },
+  "keywords": [
+    "file",
+    "tag",
+    "tagging",
+    "metadata",
+    "organize",
+    "files"
+  ],
+  "author": "peteywee",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "eslint": "^8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peteywee/filetag.git"
+  },
+  "bugs": {
+    "url": "https://github.com/peteywee/filetag/issues"
+  },
+  "homepage": "https://github.com/peteywee/filetag#readme"
+}
